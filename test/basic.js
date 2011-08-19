@@ -14,3 +14,6 @@ test({ hello: 'world', hello2: 'world2' });
 test({ hello: 'world', hello2: [ 'hello', 'world' ] });
 test({ hello: 'world', hello2: [ 'hello', 'world' ] });
 test([ 'hello', { hello: 'world', hello2: [ 'hello', 'world' ] }, 'world' ]);
+test([ 'hello', { hello: 'world', hello2: [ 'hello', 'world', { hello3: 'world3' } ] }, 'world' ]);
+test({ hello: 1 });
+test({ hello: true });

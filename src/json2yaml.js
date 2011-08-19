@@ -5,11 +5,16 @@
   var spacing = "  ";
 
   function getType(obj) {
+    var type = typeof obj;
     if (obj instanceof Array) {
       return 'array';
-    } else if (typeof obj == 'string') {
+    } else if (type == 'string') {
       return 'string';
-    } else if (obj == null) {
+    } else if (type == 'boolean') {
+      return 'boolean';
+    } else if (type == 'number') {
+      return 'number';
+    } else if (type == 'undefined' || obj === null) {
       return 'null';
     } else {
       return 'hash';
@@ -31,6 +36,12 @@
         break;
       case 'null':
         ret.push('null');
+        break;
+      case 'number':
+        ret.push(obj.toString());
+        break;
+      case 'boolean':
+        ret.push(obj ? 'true' : 'false');
         break;
     }
   }
@@ -54,7 +65,7 @@
         var ele = obj[k];
         convert(ele, recurse);
         var type = getType(ele);
-        if (type == 'string' || type == 'null') {
+        if (type == 'string' || type == 'null' || type == 'number' || type == 'boolean') {
           ret.push(normalizeString(k) + ': ' +  recurse[0]);
         } else {
           ret.push(normalizeString(k) + ': ');

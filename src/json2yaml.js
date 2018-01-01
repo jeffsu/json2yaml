@@ -1,4 +1,4 @@
-(function (self) { 
+(function (self) {
   /*
    * TODO, lots of concatenation (slow in js)
    */
@@ -47,7 +47,11 @@
   }
 
   function convertArray(obj, ret) {
+    if (obj.length === 0) {
+      ret.push('[]');
+    }
     for (var i=0; i<obj.length; i++) {
+
       var ele     = obj[i];
       var recurse = [];
       convert(ele, recurse);
@@ -88,7 +92,7 @@
   function convertString(obj, ret) {
     ret.push(normalizeString(obj));
   }
-  
+
   self.json2yaml = function(obj) {
     if (typeof obj == 'string') {
       obj = JSON.parse(obj);

@@ -22,3 +22,4 @@ test({ hello: '#你好， 世界！'});
 test({ hello: '\\你好， 世界！'});
 test({ hello: '"你好， 世界！'});
 test({ hello: '%你好， 世界！'});
+test({ hello: '1' });
